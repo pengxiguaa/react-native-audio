@@ -27,8 +27,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.media.MediaRecorder;
 import android.media.AudioManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.util.Base64;
 import android.util.Log;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
@@ -60,7 +60,7 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
   private boolean includeBase64 = false;
   private Timer timer;
   private StopWatch stopWatch;
-  
+
   private boolean isPauseResumeCapable = false;
   private Method pauseMethod = null;
   private Method resumeMethod = null;
@@ -70,7 +70,7 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
     super(reactContext);
     this.context = reactContext;
     stopWatch = new StopWatch();
-    
+
     isPauseResumeCapable = Build.VERSION.SDK_INT > Build.VERSION_CODES.M;
     if (isPauseResumeCapable) {
       try {
@@ -302,7 +302,7 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
         return;
       }
     }
-    
+
     isPaused = false;
     promise.resolve(null);
   }
